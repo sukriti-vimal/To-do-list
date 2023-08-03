@@ -1,4 +1,4 @@
-const { url } = require("inspector");
+const url = 'https://to-do-list-2h1q.onrender.com';
 
 const todoFormElement = document.querySelector('#todo-management form');
 const todosListElement = document.getElementById('todos-list');

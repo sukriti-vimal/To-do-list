@@ -1,3 +1,5 @@
+const { url } = require("inspector");
+
 const todoFormElement = document.querySelector('#todo-management form');
 const todosListElement = document.getElementById('todos-list');
 
@@ -6,7 +8,7 @@ let editedTodoElement;
 async function loadTodos() {
   let response;
   try {
-    response = await fetch('https://to-do-list-2h1q.onrender.com');
+    response = await fetch(url);
   } catch (error) {
     alert('Something went wrong!');
     return;
@@ -54,7 +56,7 @@ async function createTodo(todoText) {
   let response;
 
   try {
-    response = await fetch('https://to-do-list-2h1q.onrender.com', {
+    response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
         text: todoText,
@@ -84,7 +86,7 @@ async function updateTodo(newTodoText) {
   let response;
 
   try {
-    response = await fetch('https://to-do-list-2h1q.onrender.com' + todoId, {
+    response = await fetch(url + todoId, {
       method: 'PATCH',
       body: JSON.stringify({
         newText: newTodoText,
@@ -117,7 +119,7 @@ async function deleteTodo(event) {
   let response;
 
   try {
-    response = await fetch('https://to-do-list-2h1q.onrender.com' + todoId, {
+    response = await fetch(url + todoId, {
       method: 'DELETE',
     });
   } catch (error) {

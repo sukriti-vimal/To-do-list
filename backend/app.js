@@ -6,11 +6,12 @@ const enableCors = require('./middlewares/cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const url = "https://to-do-list-2h1q.onrender.com"
 
 app.use(enableCors);
 app.use(express.json());
 
-app.use('/todos', todosRoutes);
+app.use(url, todosRoutes);
 
 app.use(function (error, req, res, next) {
   res.status(500).json({

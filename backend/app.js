@@ -5,6 +5,7 @@ const todosRoutes = require('./routes/todos.routes');
 const enableCors = require('./middlewares/cors');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(enableCors);
 app.use(express.json());
@@ -18,9 +19,10 @@ app.use(function (error, req, res, next) {
 });
 
 db.initDb()
-  .then(function () {
-    app.listen(3000);
-  })
-  .catch(function (error) {
-    console.log('Connecting to the database failed!');
+.then(function () {
+  app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+})
+.catch(function (error) {
+  console.log('Failed to connect to the database!');
+  console.log(error);
   });

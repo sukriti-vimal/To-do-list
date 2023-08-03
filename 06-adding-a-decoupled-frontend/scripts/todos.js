@@ -6,7 +6,7 @@ let editedTodoElement;
 async function loadTodos() {
   let response;
   try {
-    response = await fetch('http://localhost:3000/todos');
+    response = await fetch('https://to-do-list-2h1q.onrender.com');
   } catch (error) {
     alert('Something went wrong!');
     return;
@@ -54,7 +54,7 @@ async function createTodo(todoText) {
   let response;
 
   try {
-    response = await fetch('http://localhost:3000/todos', {
+    response = await fetch('https://to-do-list-2h1q.onrender.com', {
       method: 'POST',
       body: JSON.stringify({
         text: todoText,
@@ -84,7 +84,7 @@ async function updateTodo(newTodoText) {
   let response;
 
   try {
-    response = await fetch('http://localhost:3000/todos/' + todoId, {
+    response = await fetch('https://to-do-list-2h1q.onrender.com' + todoId, {
       method: 'PATCH',
       body: JSON.stringify({
         newText: newTodoText,
@@ -117,7 +117,7 @@ async function deleteTodo(event) {
   let response;
 
   try {
-    response = await fetch('http://localhost:3000/todos/' + todoId, {
+    response = await fetch('https://to-do-list-2h1q.onrender.com' + todoId, {
       method: 'DELETE',
     });
   } catch (error) {

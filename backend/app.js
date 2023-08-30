@@ -3,6 +3,7 @@ const express = require('express');
 const db = require('./data/database');
 const todosRoutes = require('./routes/todos.routes');
 const enableCors = require('./middlewares/cors');
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -19,7 +20,9 @@ app.use(function (error, req, res, next) {
 
 db.initDb()
   .then(function () {
-    app.listen(3000);
+    app.listen(PORT, () => {
+      console.log(`server started on port ${PORT}`);
+    });
   })
   .catch(function (error) {
     console.log('Connecting to the database failed!');
